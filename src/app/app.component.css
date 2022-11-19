@@ -1,0 +1,25 @@
+.superContainer{
+    display: flex;
+    width: 100%;
+    height: 1000px;
+    background-color:cadetblue;
+    justify-content: space-between;
+}
+.childContainer{
+    display: flex; 
+    margin: 0 5px;
+    width: 500px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.photoContainer{
+    background-color:coral; 
+}
+.pdfContainer{
+    background-color: burlywood;
+}
+
+.videoContainer{
+    background-color: aquamarine;
+}
