@@ -1,6 +1,7 @@
 {
   "name": "angular-box",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,8 +19,16 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "aws-sdk": "^2.1258.0",
+    "browser-image-compression": "^2.0.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "util": "^0.12.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

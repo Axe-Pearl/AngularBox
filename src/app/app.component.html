@@ -1,18 +1,26 @@
 <div class="superContainer">
   <div class="childContainer photoContainer">
        <h3>Upload Photo here</h3>
-       <input type="file" (change) = "onUpload($event)" accept="image/jpeg, image/png, image/jpg, image/webp" [(ngModel)]="filePath">
-       <div class="imageDisplay">
-        <img src="{{ filePath }}" alt="">
+       <input id = "photo" type="file" (change) = "onUpload($event)" accept="image/jpeg, image/png, image/jpg, image/webp" [(ngModel)]="filePath">
+       <div class="imageDisplay" *ngIf = "inputType == 'photo'">
+        <img src = "{{ filePath }}" [class.isNone] = "filePath.length == 0  || errMsg" alt="uploaded-img" width="320" height="240" ><br>
+        <span [class.isNone] = "errMsg.length == 0" style="color:red">{{ errMsg }}</span> 
+      </div>
+       <div class="compressedContainer" [class.isNone] = "!isCompressed">
+         <h3>Compressed Image</h3><br>
+         <img src = "{{ filePath }}" alt="compressed-img" id = "compressedImg" width="320" height="240">
        </div>
   </div>
-  <div class="childContainer pdfContainer">
+  <!-- <div class="childContainer pdfContainer">
     <h3>Upload PDF here</h3>
     <input type="file">
-  </div>
+  </div> -->
   <div class="childContainer videoContainer">
     <h3>Upload video here</h3>
-    <input type="file" (change) = "onUpload($event)" accept="video/mp4,video/x-m4v,video/*">
-    <video src="{{ filePath }}" width="320" height="240" controls></video>
+    <input id ="video" type="file" (change) = "onUpload($event)" accept="video/mp4,video/x-m4v,video/*">
+    <div *ngIf = "inputType == 'video' ">
+    <video src = "{{ filePath }}"  [class.isNone] = "filePath.length == 0|| errMsg"  width="320" height="240" controls></video><br>
+    <span [class.isNone] = "errMsg.length == 0" style="color:red">{{ errMsg }}</span>  
+  </div>
   </div>
 </div> 
