@@ -1,4 +1,9 @@
+<div class="headerContainer">
+   <h1 style="text-align:center;font-family:cursive, verdana;">Angular Box</h1>
+</div>
+<!-- upload container -->
 <div class="superContainer">
+  <!-- upload photo container -->
   <div class="childContainer photoContainer">
        <h3>Upload Photo here</h3>
        <input id = "photo" type="file" (change) = "onUpload($event)" accept="image/jpeg, image/png, image/jpg, image/webp" [(ngModel)]="filePath">
@@ -11,10 +16,8 @@
          <img src = "{{ filePath }}" alt="compressed-img" id = "compressedImg" width="320" height="240">
        </div>
   </div>
-  <!-- <div class="childContainer pdfContainer">
-    <h3>Upload PDF here</h3>
-    <input type="file">
-  </div> -->
+
+<!-- upload video container -->
   <div class="childContainer videoContainer">
     <h3>Upload video here</h3>
     <input id ="video" type="file" (change) = "onUpload($event)" accept="video/mp4,video/x-m4v,video/*">
@@ -24,3 +27,13 @@
   </div>
   </div>
 </div> 
+
+
+<!-- container to display all objects from s3 bucket -->
+<button (click) = fetchObjs($event)>Fetch Objects</button>
+<div class="fetchContainer">
+    <div class="objectsContainer" *ngFor = "let file of service.allFiles">
+        <img class = "displayfile" src="https://angularbox.s3.ap-northeast-1.amazonaws.com/{{file.Key}}" alt="aws-img" width="360" height="300" (error) = "hideThis($event)">
+        <video class = "displayfile" src="https://angularbox.s3.ap-northeast-1.amazonaws.com/{{file.Key}}" width="360" height="300" (error) = hideThis($event) controls></video>
+    </div>
+</div>

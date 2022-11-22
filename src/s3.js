@@ -19,6 +19,7 @@ const s3 = new aws.S3({
   })  
 console.log(s3);
 
+// generate a secure url here
 export async function generateUploadUrl(){
 const rawBytes = await randomBytes(16);
 const imageName = rawBytes.toString('hex');
@@ -31,4 +32,19 @@ const params = ({
 
 const uploadURL = await s3.getSignedUrlPromise('putObject', params)
 return uploadURL;
+}
+
+
+export async function getBucketObjects(){
+   // get all objects from s3 bucket
+  return new Promise((resolve,reject)=>{
+     s3.listObjectsV2({Bucket: bucketName, MaxKeys: 200}, (err, data) => {
+      if(err) { 
+        console.log("Error: ", err);
+        reject("Error")
+      }
+      console.log("Data", data.Contents);
+        resolve(data.Contents);
+    }); 
+  })
 }
